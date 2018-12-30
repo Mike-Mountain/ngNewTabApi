@@ -14,8 +14,8 @@ export class BookmarksService implements IBookmarksService {
     return await this.bookmarkModel.find().exec();
   }
 
-  async findOne(options: object): Promise<IBookmark> {
-    return await this.bookmarkModel.findOne(options).exec();
+  async find(options: object): Promise<IBookmark[]> {
+    return await this.bookmarkModel.find(options).exec();
   }
 
   async findById(ID: string): Promise<IBookmark> {

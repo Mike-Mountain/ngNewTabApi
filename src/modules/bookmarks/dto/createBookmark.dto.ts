@@ -2,6 +2,9 @@ import { ApiModelProperty } from '@nestjs/swagger';
 
 export class CreateBookmarkDto {
   @ApiModelProperty()
+  readonly userId: string;
+
+  @ApiModelProperty()
   readonly title: string;
 
   @ApiModelProperty()

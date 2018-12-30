@@ -6,6 +6,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   app.enableCors({
+    // origin: 'chrome-extension://cghfdknjcdcoafdcodebdgplgkjfhoef',
     origin: 'http://localhost:4200',
   });
 

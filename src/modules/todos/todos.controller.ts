@@ -16,11 +16,12 @@ export class TodosController {
     return res.status(HttpStatus.OK).json(todos);
   }
 
-  @Get('find')
-  public async findTodo(@Response() res, @Body() body) {
-    const queryCondition = body;
-    const todo = await this.todosService.findOne(queryCondition);
-    return res.status(HttpStatus.OK).json(todo);
+  @Get('/:userId')
+  public async findTodo(@Response() res, @Param() param) {
+    const queryCondition = param.userId;
+    const todos = await this.todosService.find({userId: queryCondition});
+    debug('returned:', todos);
+    return res.status(HttpStatus.OK).json(todos);
   }
 
   @Get('/:id')

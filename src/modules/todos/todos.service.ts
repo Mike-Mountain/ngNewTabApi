@@ -14,8 +14,8 @@ export class TodosService implements ITodosService {
     return await this.todoModel.find().exec();
   }
 
-  async findOne(options: object): Promise<ITodo> {
-    return await this.todoModel.findOne(options).exec();
+  async find(options: object): Promise<ITodo[]> {
+    return await this.todoModel.find(options).exec();
   }
 
   async findById(ID: string): Promise<ITodo> {
@@ -32,7 +32,7 @@ export class TodosService implements ITodosService {
     if (!todo._id) {
       debug('todo not found');
     }
-    await this.todoModel.findByIdAndUpdate(ID, newValue).exec();
+    await this.todoModel.findOneAndUpdate(ID, newValue).exec();
     return await this.todoModel.findById(ID).exec();
   }
 

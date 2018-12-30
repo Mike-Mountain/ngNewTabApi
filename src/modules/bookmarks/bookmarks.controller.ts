@@ -16,11 +16,12 @@ export class BookmarksController {
     return res.status(HttpStatus.OK).json(notes);
   }
 
-  @Get('find')
-  public async findNote(@Response() res, @Body() body) {
-    const queryCondition = body;
-    const note = await this.bookmarkService.findOne(queryCondition);
-    return res.status(HttpStatus.OK).json(note);
+  @Get('/:userId')
+  public async findNote(@Response() res, @Param() param) {
+    const queryCondition = param.userId;
+    const bookmarks = await this.bookmarkService.find({userId: queryCondition});
+    debug('returned:', bookmarks);
+    return res.status(HttpStatus.OK).json(bookmarks);
   }
 
   @Get('/:id')
