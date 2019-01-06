@@ -9,4 +9,5 @@ export const TodoSchema = new mongoose.Schema({
   description: String,
   dueDate: Date,
   complete: Boolean,
+  folder: String,
 });

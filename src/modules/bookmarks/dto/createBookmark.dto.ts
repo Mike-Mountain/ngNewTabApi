@@ -15,4 +15,7 @@ export class CreateBookmarkDto {
 
   @ApiModelProperty()
   readonly faviconUrl: string;
+
+  @ApiModelProperty()
+  readonly folder: string;
 }

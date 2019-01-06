@@ -1,30 +1,24 @@
 import { ApiModelProperty } from '@nestjs/swagger';
 
-export class CreateTodoDto {
+export class CreateFolderDto {
   @ApiModelProperty()
   readonly userId: string;
 
   @ApiModelProperty()
-  readonly sid: string;
+  readonly folderFor: string;
 
   @ApiModelProperty()
-  readonly createdOn: Date;
+  readonly name: string;
 
   @ApiModelProperty()
-  readonly modifiedOn: Date;
-
-  @ApiModelProperty()
-  readonly title: string;
+  readonly itemIds: Array<string>;
 
   @ApiModelProperty()
   readonly description: string;
 
   @ApiModelProperty()
-  readonly dueDate: Date;
+  readonly created: Date;
 
   @ApiModelProperty()
-  readonly complete: boolean;
-
-  @ApiModelProperty()
-  readonly folder: string;
+  readonly iconUrl: string;
 }

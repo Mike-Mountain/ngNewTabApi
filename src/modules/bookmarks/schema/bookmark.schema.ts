@@ -6,4 +6,5 @@ export const BookmarkSchema = new mongoose.Schema({
   description: String,
   url: String,
   faviconUrl: String,
+  folder: String,
 });

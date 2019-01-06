@@ -32,7 +32,16 @@ export class TodosService implements ITodosService {
     if (!todo._id) {
       debug('todo not found');
     }
-    await this.todoModel.findOneAndUpdate(ID, newValue).exec();
+    debug('NEWVALUE || :', newValue);
+    await this.todoModel.findOneAndUpdate(ID, {
+      sid: newValue.sid,
+      modifiedOn: newValue.modifiedOn,
+      title: newValue.title,
+      description: newValue.description,
+      dueDate: newValue.dueDate,
+      complete: newValue.complete,
+      folder: newValue.folder,
+    }).exec();
     return await this.todoModel.findById(ID).exec();
   }
 

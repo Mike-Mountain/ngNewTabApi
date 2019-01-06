@@ -16,15 +16,28 @@ export class BookmarksController {
     return res.status(HttpStatus.OK).json(notes);
   }
 
-  @Get('/:userId')
-  public async findNote(@Response() res, @Param() param) {
-    const queryCondition = param.userId;
-    const bookmarks = await this.bookmarkService.find({userId: queryCondition});
-    debug('returned:', bookmarks);
+  @Get('/folder/:folderName/user/:userId')
+  public async getBookmarksByFolder(@Response() res, @Param() param) {
+    debug(param);
+    const folderName = param.folderName;
+    const user = param.userId;
+    debug('user:', user);
+    debug('folder:', folderName);
+    const bookmarks = await this.bookmarkService.find({
+      folder: folderName,
+      userId: user,
+    });
     return res.status(HttpStatus.OK).json(bookmarks);
   }
 
-  @Get('/:id')
+  @Get('/user/:userId')
+  public async findNote(@Response() res, @Param() param) {
+    const queryCondition = param.userId;
+    const bookmarks = await this.bookmarkService.find({ userId: queryCondition });
+    return res.status(HttpStatus.OK).json(bookmarks);
+  }
+
+  @Get('/note/:id')
   public async getNote(@Response() res, @Param() param) {
     const note = await this.bookmarkService.findById(param.id);
     return res.status(HttpStatus.OK).json(note);

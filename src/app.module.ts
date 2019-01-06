@@ -10,6 +10,10 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { BookmarksModule } from './modules/bookmarks/bookmarks.module';
 import { BookmarksService } from './modules/bookmarks/bookmarks.service';
+import { MessagesModule } from './modules/messages/messages.module';
+import { MessagesService } from './modules/messages/messages.service';
+import { FoldersModule } from './modules/folders/folders.module';
+import { FoldersService } from './modules/folders/folders.service';
 
 @Module({
   imports: [
@@ -18,6 +22,8 @@ import { BookmarksService } from './modules/bookmarks/bookmarks.service';
     TodosModule,
     NotesModule,
     BookmarksModule,
+    MessagesModule,
+    FoldersModule,
   ],
   controllers: [
     AppController,
@@ -27,6 +33,8 @@ import { BookmarksService } from './modules/bookmarks/bookmarks.service';
     TodosService,
     NotesService,
     BookmarksService,
+    MessagesService,
+    FoldersService,
   ],
 })
 export class AppModule implements NestModule {

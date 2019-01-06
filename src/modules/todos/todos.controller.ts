@@ -16,11 +16,28 @@ export class TodosController {
     return res.status(HttpStatus.OK).json(todos);
   }
 
+  @Get('/folder/:folderName/user/:userId')
+  public async getBookmarksByFolder(@Response() res, @Param() param) {
+    const folderName = param.folderName;
+    const user = param.userId;
+    const bookmarks = await this.todosService.find({
+      folder: folderName,
+      userId: user,
+    });
+    return res.status(HttpStatus.OK).json(bookmarks);
+  }
+
+  @Get('/user/:userId')
+  public async findNote(@Response() res, @Param() param) {
+    const queryCondition = param.userId;
+    const bookmarks = await this.todosService.find({ userId: queryCondition });
+    return res.status(HttpStatus.OK).json(bookmarks);
+  }
+
   @Get('/:userId')
   public async findTodo(@Response() res, @Param() param) {
     const queryCondition = param.userId;
     const todos = await this.todosService.find({userId: queryCondition});
-    debug('returned:', todos);
     return res.status(HttpStatus.OK).json(todos);
   }
 
@@ -40,7 +57,9 @@ export class TodosController {
 
   @Patch('/:id')
   public async updateTodo(@Param() param, @Response() res, @Body() body) {
-    const todo = await this.todosService.update(param.id, body);
+    debug('toUpdate:', param);
+    const todo = await this.todosService.update(param.id, body.complete);
+    debug('updated TODO: |||| ', todo);
     return res.status(HttpStatus.OK).json(todo);
   }
 

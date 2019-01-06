@@ -19,8 +19,8 @@ export class NotesService implements INotesService {
     return await this.notesModel.find(options).exec();
   }
 
-  async findById(ID: string): Promise<INote> {
-    return await this.notesModel.findById(ID).exec();
+  async findById(id: string): Promise<INote> {
+    return await this.notesModel.findById(id).exec();
   }
 
   async create(createNoteDto: CreateNoteDto): Promise<INote> {

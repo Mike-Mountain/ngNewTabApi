@@ -23,8 +23,8 @@ export class BookmarksService implements IBookmarksService {
   }
 
   async create(createBookmarkDto: CreateBookmarkDto): Promise<IBookmark> {
-    const createdNote = new this.bookmarkModel(createBookmarkDto);
-    return await createdNote.save();
+    const createdBookmark = new this.bookmarkModel(createBookmarkDto);
+    return await createdBookmark.save();
   }
 
   async update(ID: string, newValue: IBookmark): Promise<IBookmark> {

@@ -17,17 +17,17 @@ export class NotesController {
     return res.status(HttpStatus.OK).json(notes);
   }
 
-  @Get('/:userId')
+  @Get('/user/:userId')
   public async findNote(@Response() res, @Param() param) {
     const queryCondition = param.userId;
     const notes = await this.notesService.find({userId: queryCondition});
-    debug('Returned:', notes);
     return res.status(HttpStatus.OK).json(notes);
   }
 
-  @Get('/:id')
-  public async getNote(@Response() res, @Param() param) {
+  @Get('/note/:id')
+  public async getNoteById(@Response() res, @Param() param) {
     const note = await this.notesService.findById(param.id);
+    debug('Note By ID', note);
     return res.status(HttpStatus.OK).json(note);
   }
 

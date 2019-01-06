@@ -6,4 +6,5 @@ export interface IBookmark extends Document {
   readonly description: string;
   readonly url: string;
   readonly faviconUrl: string;
+  readonly folder: string;
 }

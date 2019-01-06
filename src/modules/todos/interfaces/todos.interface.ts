@@ -9,4 +9,5 @@ export interface ITodo extends Document {
   readonly description: string;
   readonly dueDate: Date;
   readonly complete: boolean;
+  readonly folder: string;
 }
