@@ -27,7 +27,6 @@ export class NotesController {
   @Get('/note/:id')
   public async getNoteById(@Response() res, @Param() param) {
     const note = await this.notesService.findById(param.id);
-    debug('Note By ID', note);
     return res.status(HttpStatus.OK).json(note);
   }
 

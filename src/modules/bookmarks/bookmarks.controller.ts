@@ -12,8 +12,8 @@ export class BookmarksController {
 
   @Get()
   public async getNotes(@Response() res) {
-    const notes = await this.bookmarkService.findAll();
-    return res.status(HttpStatus.OK).json(notes);
+    const bookmarks = await this.bookmarkService.findAll();
+    return res.status(HttpStatus.OK).json(bookmarks);
   }
 
   @Get('/folder/:folderName/user/:userId')
@@ -37,29 +37,29 @@ export class BookmarksController {
     return res.status(HttpStatus.OK).json(bookmarks);
   }
 
-  @Get('/note/:id')
+  @Get('/bookmark/:id')
   public async getNote(@Response() res, @Param() param) {
-    const note = await this.bookmarkService.findById(param.id);
-    return res.status(HttpStatus.OK).json(note);
+    const bookmark = await this.bookmarkService.findById(param.id);
+    return res.status(HttpStatus.OK).json(bookmark);
   }
 
   @Post()
   @ApiResponse({ status: 201, description: 'Th record has been successfully saved' })
   @ApiResponse({ status: 403, description: 'Forbidden' })
   public async createNote(@Response() res, @Body() createBookmarkDto: CreateBookmarkDto) {
-    const note = await this.bookmarkService.create(createBookmarkDto);
-    return res.status(HttpStatus.OK).json(note);
+    const bookmark = await this.bookmarkService.create(createBookmarkDto);
+    return res.status(HttpStatus.OK).json(bookmark);
   }
 
   @Patch('/:id')
   public async updateNote(@Response() res, @Param() param, @Body() body) {
-    const note = await this.bookmarkService.update(param.id, body);
-    return res.status(HttpStatus.OK).json(note);
+    const bookmark = await this.bookmarkService.update(param.id, body);
+    return res.status(HttpStatus.OK).json(bookmark);
   }
 
   @Delete('/:id')
   public async deleteNote(@Response() res, @Param() param) {
-    const note = await this.bookmarkService.delete(param.id);
-    return res.status(HttpStatus.OK).json(note);
+    const bookmark = await this.bookmarkService.delete(param.id);
+    return res.status(HttpStatus.OK).json(bookmark);
   }
 }

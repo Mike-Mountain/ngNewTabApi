@@ -21,7 +21,6 @@ export class MessagesController {
   public async findMessage(@Response() res, @Param() param) {
     const queryCondition = param.userId;
     const messages = await this.messageService.find({ userId: queryCondition });
-    debug('Returned Notes:', messages);
     return res.status(HttpStatus.OK).json(messages);
   }
 
@@ -35,7 +34,6 @@ export class MessagesController {
   public async getMessagesByCategory(@Response() res, @Param() param) {
     const category = param.category;
     const messages = await this.messageService.find({ origin: category });
-    debug(messages);
     return res.status(HttpStatus.OK).json(messages);
   }
 
@@ -43,7 +41,6 @@ export class MessagesController {
   public async getMessagesByType(@Response() res, @Param() param) {
     const type = param.type;
     const messages = await this.messageService.find({ error: type });
-    debug(messages);
     return res.status(HttpStatus.OK).json(messages);
   }
 

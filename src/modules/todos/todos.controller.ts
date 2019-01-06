@@ -57,9 +57,7 @@ export class TodosController {
 
   @Patch('/:id')
   public async updateTodo(@Param() param, @Response() res, @Body() body) {
-    debug('toUpdate:', param);
     const todo = await this.todosService.update(param.id, body.complete);
-    debug('updated TODO: |||| ', todo);
     return res.status(HttpStatus.OK).json(todo);
   }
 
