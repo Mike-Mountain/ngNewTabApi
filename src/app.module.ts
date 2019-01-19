@@ -14,6 +14,8 @@ import { MessagesModule } from './modules/messages/messages.module';
 import { MessagesService } from './modules/messages/messages.service';
 import { FoldersModule } from './modules/folders/folders.module';
 import { FoldersService } from './modules/folders/folders.service';
+import { WeatherModule } from './modules/weather/weather.module';
+import { WeatherService } from './modules/weather/weather.service';
 
 @Module({
   imports: [
@@ -24,6 +26,7 @@ import { FoldersService } from './modules/folders/folders.service';
     BookmarksModule,
     MessagesModule,
     FoldersModule,
+    WeatherModule,
   ],
   controllers: [
     AppController,
@@ -35,6 +38,7 @@ import { FoldersService } from './modules/folders/folders.service';
     BookmarksService,
     MessagesService,
     FoldersService,
+    WeatherService,
   ],
 })
 export class AppModule implements NestModule {

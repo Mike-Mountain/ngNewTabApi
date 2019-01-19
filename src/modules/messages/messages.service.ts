@@ -39,7 +39,7 @@ export class MessagesService implements IMessagesService {
 
   async delete(ID: string): Promise<string> {
     try {
-      await this.messagesModel.findByIdAndDelete(ID).exec();
+      await this.messagesModel.findByIdAndRemove(ID).exec();
       return 'The Message has been deleted';
     } catch (err) {
       debug(err);

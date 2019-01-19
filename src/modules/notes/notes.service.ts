@@ -39,7 +39,7 @@ export class NotesService implements INotesService {
 
   async delete(ID: string): Promise<string> {
     try {
-      await this.notesModel.findByIdAndDelete(ID).exec();
+      await this.notesModel.findByIdAndRemove(ID).exec();
       return 'The todo has been deleted';
     } catch (err) {
       debug(err);

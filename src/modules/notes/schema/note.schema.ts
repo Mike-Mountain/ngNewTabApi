@@ -7,4 +7,5 @@ export const NoteSchema = new mongoose.Schema({
   body: String,
   created: Date,
   modifiedOn: Date,
+  folder: String,
 });

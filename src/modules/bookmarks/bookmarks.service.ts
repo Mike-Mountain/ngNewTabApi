@@ -38,7 +38,7 @@ export class BookmarksService implements IBookmarksService {
 
   async delete(ID: string): Promise<string> {
     try {
-      await this.bookmarkModel.findByIdAndDelete(ID).exec();
+      await this.bookmarkModel.findByIdAndRemove(ID).exec();
       return 'The todo has been deleted';
     } catch (err) {
       debug(err);

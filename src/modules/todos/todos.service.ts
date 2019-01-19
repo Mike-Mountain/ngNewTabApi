@@ -32,8 +32,7 @@ export class TodosService implements ITodosService {
     if (!todo._id) {
       debug('todo not found');
     }
-    debug('NEWVALUE || :', newValue);
-    await this.todoModel.findOneAndUpdate(ID, {
+    await this.todoModel.findByIdAndUpdate(ID, {
       sid: newValue.sid,
       modifiedOn: newValue.modifiedOn,
       title: newValue.title,
@@ -47,10 +46,10 @@ export class TodosService implements ITodosService {
 
   async delete(ID: string): Promise<string> {
     try {
-      await this.todoModel.findByIdAndDelete(ID).exec();
+      await this.todoModel.findByIdAndRemove(ID).exec();
       return 'The todo has been deleted';
     } catch (err) {
-      debug(err);
+      debug('ERROR:', err);
       return 'The todo could not be deleted';
     }
   }

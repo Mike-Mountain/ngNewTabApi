@@ -7,4 +7,5 @@ export interface INote extends Document {
   readonly body: string;
   readonly created: Date;
   readonly modified: Date;
+  readonly folder: string;
 }

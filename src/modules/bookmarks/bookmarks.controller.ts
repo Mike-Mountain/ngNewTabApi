@@ -18,11 +18,8 @@ export class BookmarksController {
 
   @Get('/folder/:folderName/user/:userId')
   public async getBookmarksByFolder(@Response() res, @Param() param) {
-    debug(param);
     const folderName = param.folderName;
     const user = param.userId;
-    debug('user:', user);
-    debug('folder:', folderName);
     const bookmarks = await this.bookmarkService.find({
       folder: folderName,
       userId: user,

@@ -6,8 +6,11 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   app.enableCors({
-    // origin: 'chrome-extension://cghfdknjcdcoafdcodebdgplgkjfhoef',
-    origin: 'http://localhost:4200',
+    origin: [
+      'http://localhost:4200',
+      'chrome-extension://cghfdknjcdcoafdcodebdgplgkjfhoef',
+      'http://localhost:3200',
+    ],
   });
 
   const options = new DocumentBuilder()

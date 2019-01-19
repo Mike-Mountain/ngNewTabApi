@@ -39,7 +39,7 @@ export class FoldersService implements IFoldersService {
 
   async delete(ID: string): Promise<string> {
     try {
-      await this.foldersModel.findByIdAndDelete(ID).exec();
+      await this.foldersModel.findByIdAndRemove(ID).exec();
       return 'The Folder has been deleted';
     } catch (err) {
       debug(err);

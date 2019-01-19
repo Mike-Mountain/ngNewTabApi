@@ -20,11 +20,11 @@ export class TodosController {
   public async getBookmarksByFolder(@Response() res, @Param() param) {
     const folderName = param.folderName;
     const user = param.userId;
-    const bookmarks = await this.todosService.find({
+    const todos = await this.todosService.find({
       folder: folderName,
       userId: user,
     });
-    return res.status(HttpStatus.OK).json(bookmarks);
+    return res.status(HttpStatus.OK).json(todos);
   }
 
   @Get('/user/:userId')
@@ -57,7 +57,7 @@ export class TodosController {
 
   @Patch('/:id')
   public async updateTodo(@Param() param, @Response() res, @Body() body) {
-    const todo = await this.todosService.update(param.id, body.complete);
+    const todo = await this.todosService.update(param.id, body);
     return res.status(HttpStatus.OK).json(todo);
   }
 

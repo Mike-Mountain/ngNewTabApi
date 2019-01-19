@@ -38,7 +38,7 @@ export class UsersService implements IUserService {
 
   async delete(id: string): Promise<string> {
     try {
-      await this.userModel.findByIdAndDelete(id).exec();
+      await this.userModel.findByIdAndRemove(id).exec();
       return 'The User has been deleted';
     } catch (error) {
       debug(error);

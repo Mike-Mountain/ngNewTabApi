@@ -17,10 +17,21 @@ export class NotesController {
     return res.status(HttpStatus.OK).json(notes);
   }
 
+  @Get('/folder/:folderName/user/:userId')
+  public async getBookmarksByFolder(@Response() res, @Param() param) {
+    const folderName = param.folderName;
+    const user = param.userId;
+    const notes = await this.notesService.find({
+      folder: folderName,
+      userId: user,
+    });
+    return res.status(HttpStatus.OK).json(notes);
+  }
+
   @Get('/user/:userId')
   public async findNote(@Response() res, @Param() param) {
     const queryCondition = param.userId;
-    const notes = await this.notesService.find({userId: queryCondition});
+    const notes = await this.notesService.find({ userId: queryCondition });
     return res.status(HttpStatus.OK).json(notes);
   }
 
@@ -31,7 +42,7 @@ export class NotesController {
   }
 
   @Post()
-  @ApiResponse({ status: 201, description: 'Th record has been successfully saved' })
+  @ApiResponse({ status: 201, description: 'The record has been successfully saved' })
   @ApiResponse({ status: 403, description: 'Forbidden' })
   public async createNote(@Response() res, @Body() createNoteDto: CreateNoteDto) {
     const note = await this.notesService.create(createNoteDto);

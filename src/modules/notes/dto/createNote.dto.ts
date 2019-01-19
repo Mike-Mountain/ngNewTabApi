@@ -18,4 +18,7 @@ export class CreateNoteDto {
 
   @ApiModelProperty()
   readonly modified: Date;
+
+  @ApiModelProperty()
+  readonly folder: string;
 }
